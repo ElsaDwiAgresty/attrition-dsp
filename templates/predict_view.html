@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Predict Attrition{% endblock %}
+{% block content %}
+<h1>Predict Attrition</h1>
+{% if features and prediction is not none %}
+    <center><h2>Attrition: {{ prediction }}</h2></center>
+{% endif %}
+<form method="post" class="predict-form">
+    <div class="form-row">
+        <label>MonthlyIncome:</label>
+        <input type="number" name="MonthlyIncome" value="{{ features['MonthlyIncome'] }}" required>
+    </div>
+    <div class="form-row">
+        <label>Age:</label>
+        <input type="number" name="Age" value="{{ features['Age'] }}" required>
+    </div>
+    <div class="form-row">
+        <label>TotalWorkingYears:</label>
+        <input type="number" name="TotalWorkingYears" value="{{ features['TotalWorkingYears'] }}" required>
+    </div>
+    <div class="form-row">
+        <label>OverTime:</label>
+        <select name="OverTime" required>
+            <option value="0" {% if features['OverTime'] == 0 %}selected{% endif %}>No</option>
+            <option value="1" {% if features['OverTime'] == 1 %}selected{% endif %}>Yes</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label>MonthlyRate:</label>
+        <input type="number" name="MonthlyRate" value="{{ features['MonthlyRate'] }}" required>
+    </div>
+    <div class="form-row">
+        <label>DailyRate:</label>
+        <input type="number" name="DailyRate" value="{{ features['DailyRate'] }}" required>
+    </div>
+    <div class="form-row">
+        <label>DistanceFromHome:</label>
+        <input type="number" name="DistanceFromHome" value="{{ features['DistanceFromHome'] }}" required>
+    </div>
+    <div class="form-row">
+        <label>HourlyRate:</label>
+        <input type="number" name="HourlyRate" value="{{ features['HourlyRate'] }}" required>
+    </div>
+    <div class="form-row">
+        <label>NumCompaniesWorked:</label>
+        <input type="number" name="NumCompaniesWorked" value="{{ features['NumCompaniesWorked'] }}" required>
+    </div>
+    <button type="submit" class="predict-btn">Submit</button>
+</form>
+<!-- {% if features and prediction is not none %}
+    <div class="result">
+        <h3>Input Features:</h3>
+        <ul>
+            {% for key, value in features.items() %}
+                <li><strong>{{ key }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %} -->
+{% endblock %}
