@@ -3,23 +3,27 @@
 {% block title %}Home - Solid Web App{% endblock %}
 
 {% block content %}
-<div style="text-align:center; margin-top: 60px;">
-	<h1>Selamat Datang di Halaman Attrition Analysis DSP</h1>
-	<p>Platform analitik untuk prediksi dan visualisasi data attrition.</p>
-	<a href="/dashboard" style="
-		display: inline-block;
-		margin-top: 2rem;
-		padding: 0.8rem 2.2rem;
-		background: linear-gradient(90deg, #3a7bd5 0%, #00d2ff 100%);
-		color: #fff;
-		border-radius: 8px;
-		font-size: 1.1rem;
-		font-weight: 500;
-		text-decoration: none;
-		box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-		transition: background 0.2s;
-	" onmouseover="this.style.background='#005fa3'" onmouseout="this.style.background='linear-gradient(90deg, #3a7bd5 0%, #00d2ff 100%)'">
-		Masuk ke Dashboard
-	</a>
-</div>
+<section class="dashboard-container">
+	<div style="text-align:center; margin-top: 40px;">
+		<h1>Selamat Datang di <span style="color:#3a7bd5;">Halaman Attrition Analisis</span></h1>
+		<p style="font-size:1.1rem; color:#444; max-width:680px; margin:10px auto;">
+			Platform analitik ini dirancang untuk membantu menganalisis dan memprediksi tingkat <strong>attrition</strong> 
+			(keluar-masuk karyawan) secara cerdas menggunakan <strong>machine learning</strong>.
+		</p>
+	</div>
+
+	<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.8rem; margin-top:3rem;">
+		<div style="background:#f4f6fb; border-radius:16px; padding:1.7rem 2.2rem; box-shadow:0 4px 18px rgba(60,60,120,0.12); max-width:280px; transition:transform 0.2s;">
+			<h3 style="color:#1a237e;">📊 Dashboard Analitik</h3>
+			<p style="font-size:0.95rem; color:#333;">Lihat visualisasi data dan temukan insight mendalam mengenai pola attrition karyawan.</p>
+			<a href="{{ url_for('get_dashboard') }}" class="button" style="margin-top:1rem;">Lihat Dashboard</a>
+		</div>
+
+		<div style="background:#f4f6fb; border-radius:16px; padding:1.7rem 2.2rem; box-shadow:0 4px 18px rgba(60,60,120,0.12); max-width:280px; transition:transform 0.2s;">
+			<h3 style="color:#1a237e;">🤖 Prediksi Attrition</h3>
+			<p style="font-size:0.95rem; color:#333;">Masukkan data karyawan dan sistem akan memprediksi kemungkinan terjadinya attrition.</p>
+			<a href="{{ url_for('predict_view') }}" class="button" style="margin-top:1rem;">Mulai Prediksi</a>
+		</div>
+	</div>
+</section>
 {% endblock %}
