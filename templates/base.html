@@ -8,10 +8,19 @@
 <body>
     <nav>
         <ul>
-            <li><a href="/dashboard">Dashboard Analitik</a></li>
-            <li><a href="/predict">Prediksi</a></li>
+            <li><a href="{{ url_for('home') }}" 
+                class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+
+            <li><a href="{{ url_for('get_dashboard') }}" 
+                class="{% if request.path.startswith('/dashboard') %}active{% endif %}">
+                Dashboard Analitik</a></li>
+
+            <li><a href="{{ url_for('predict_view') }}" 
+                class="{% if request.path.startswith('/predict') %}active{% endif %}">
+                Prediksi</a></li>
         </ul>
     </nav>
+
     <main>
         {% block content %}{% endblock %}
     </main>
