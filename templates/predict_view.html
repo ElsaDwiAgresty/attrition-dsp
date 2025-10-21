@@ -2,9 +2,16 @@
 {% block title %}Predict Attrition{% endblock %}
 {% block content %}
 <h1>Predict Attrition</h1>
+
+
 {% if features and prediction is not none %}
-    <center><h2>Attrition: {{ prediction }}</h2></center>
+<div class="result-box">
+    <h2 class="{% if prediction == 'Yes' %}yes{% else %}no{% endif %}">
+        Attrition: {{ prediction }}
+    </h2>
+</div>
 {% endif %}
+
 <form method="post" class="predict-form">
     <div class="form-row">
         <label>MonthlyIncome:</label>
@@ -47,14 +54,4 @@
     </div>
     <button type="submit" class="predict-btn">Submit</button>
 </form>
-<!-- {% if features and prediction is not none %}
-    <div class="result">
-        <h3>Input Features:</h3>
-        <ul>
-            {% for key, value in features.items() %}
-                <li><strong>{{ key }}:</strong> {{ value }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endif %} -->
 {% endblock %}
